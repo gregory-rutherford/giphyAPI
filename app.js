@@ -8,38 +8,10 @@ var topics = [
   "Slay the Spire"
 ];
 var gifUrl;
-//returns a button with the text passed through as the name
-function makeButton(nameOfButton) {
-  return `
-    <button type="button" class="btn btn-primary"  id="button">
-    ${nameOfButton}
-    </button>
-    `;
-}
-//after clicking the submit button, a new button with the 
-//users text as the name of the button, is displayed on the page
-$(document).on("click", "#submit", function() {
-  var newButton = $("#userInput").val();
-  event.preventDefault();
-  $(".buttonFrame").append(makeButton(newButton));
-});
-//goes through each entry in the topics array and makes a button for each entry
-$(".buttonFrame").html(topics.map(makeButton));
-//returns a img tag with the source set to the giphy query results,
-//also holds the still source and the data-state attribute
-function displayGif(obj) {
-  const gifToDisplay = obj.images.fixed_height.url;
-  const stillGif = obj.images.fixed_height_still.url;
-  return `
-    <img class="gif" src="${gifToDisplay}"
-    data-still="${stillGif}"
-    data-animated="${gifToDisplay}"
-    data-state="animated"
-    />
-    `;
-}
+
+
 //upon clicking the new or old button the giphy database is queried, and the gif frame will display 10 new gifs based on the query results
-$(document).on("click", "#button", function() {
+$(document).on("click touchstart", "#button", function() {
   var gifSearch = $(this).text();
   var queryURL =
     "http://api.giphy.com/v1/gifs/search?q=" +
@@ -55,14 +27,47 @@ $(document).on("click", "#button", function() {
     $("#gifFrame").prepend(response.data.map(displayGif));
   });
 });
-
-$(document).on("click", ".gif", function() {
-  var state = $(".gif").attr("data-state");
-  if (state === "animated") {
-    $(this).attr("data-state", "still")
-    $(this).attr("src", $(this).attr("data-still"))
-  } else {
+//returns a img tag with the source set to the giphy query results,
+//also holds the still source and the data-state attribute
+function displayGif(obj) {
+  const gifToDisplay = obj.images.fixed_height_still.url;
+  const animatedGif = obj.images.fixed_height.url;
+  const rating = obj.rating;
+  return `
+    <img class="gif" src="${gifToDisplay}"
+    data-animated="${animatedGif}"
+    data-still="${gifToDisplay}"
+    data-state="still"/>
+    <p>${rating}</p>
+    `;
+}
+//click the gif to change the "state" (source) to still or animated
+$(document).on("click touchstart", ".gif", function() {
+  var state = $(this).attr("data-state");
+  if (state === "still") {
     $(this).attr("data-state", "animated")
     $(this).attr("src", $(this).attr("data-animated"))
+  } else  {
+    $(this).attr("data-state", "still")
+    $(this).attr("src", $(this).attr("data-still"))
   }
 });
+
+
+//returns a button with the text passed through as the name
+function makeButton(nameOfButton) {
+  return `
+    <button type="button" class="btn btn-primary"  id="button">
+    ${nameOfButton}
+    </button>
+    `;
+}
+//after clicking the submit button, a new button with the
+//users text as the name of the button, is displayed on the page
+$(document).on("click touchstart", "#submit", function() {
+  var newButton = $("#userInput").val();
+  event.preventDefault();
+  $(".buttonFrame").append(makeButton(newButton));
+});
+//goes through each entry in the topics array and makes a button for each entry
+$(".buttonFrame").html(topics.map(makeButton));
