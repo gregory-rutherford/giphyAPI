@@ -1,0 +1,45 @@
+* {
+    font-family: 'Work Sans', sans-serif;
+}
+
+button {
+    width: 200px;
+    height: auto;
+    background-color: rgb(241, 207, 213) !important;
+    text-align: center !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    text-shadow: 1px 1px black;
+    border: none !important;
+    margin-top: 8px;
+}
+button:hover {
+    background-color: rgb(224, 162, 193) !important;
+}
+
+button:focus {
+    border-color: white !important;
+}
+
+.jumbotron {
+    background: rgb(228, 200, 200) !important;
+    border-bottom: 2px solid rgb(236, 231, 228) !important;
+    padding-bottom: 8px !important;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    align-self: center;
+}
+
+#gifFrame {
+    align-content: center;
+    max-width: 968px !important;
+}
+
+p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+}

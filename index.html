@@ -8,16 +8,19 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link type="text/css" href="assets/style.css" rel="stylesheet"/> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet"> 
     <title>GifButtons!</title>
   </head>
 
   <body>
     <div class="jumbotron jumbotron-fluid">
-      <div class="buttonFrame">
+      <div id="buttonFrame" >
         <!-- //buttons will go here -->
       </div>
     </div>
-    <div id="formFrame">
+    <div id="formFrame" class="container-fluid d-flex justify-content-around">
         <form>
             <input type="text" id="userInput">
             <input type="submit" value="Make A Button" id="submit">
@@ -25,7 +28,7 @@
     </div>
 
     </div>
-    <div id="gifFrame">
+    <div class="container-fluid d-flex flex-column justify-content-center" id="gifFrame">
       <!-- gifs will be displayed here -->
     </div>
 

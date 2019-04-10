@@ -5,7 +5,10 @@ var topics = [
   "Megaman",
   "Pulp",
   "The Karate Kid",
-  "Slay the Spire"
+  "Slay the Spire",
+  "Metallica",
+  "The Warriors",
+  "Dead Cells"
 ];
 var gifUrl;
 
@@ -67,7 +70,7 @@ function makeButton(nameOfButton) {
 $(document).on("click touchstart", "#submit", function() {
   var newButton = $("#userInput").val();
   event.preventDefault();
-  $(".buttonFrame").append(makeButton(newButton));
+  $("#buttonFrame").append(makeButton(newButton));
 });
 //goes through each entry in the topics array and makes a button for each entry
-$(".buttonFrame").html(topics.map(makeButton));
+$("#buttonFrame").html(topics.map(makeButton));
