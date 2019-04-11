@@ -36,12 +36,16 @@ function displayGif(obj) {
   const gifToDisplay = obj.images.fixed_height_still.url;
   const animatedGif = obj.images.fixed_height.url;
   const rating = obj.rating;
+  const title = obj.title;
+  const source = obj.url;
   return `
     <img class="gif" src="${gifToDisplay}"
     data-animated="${animatedGif}"
     data-still="${gifToDisplay}"
     data-state="still"/>
     <p>${rating}</p>
+    <p>${title}</p>
+    <a href="${source}">GIPHY source</a>
     `;
 }
 //click the gif to change the "state" (source) to still or animated
