@@ -17,7 +17,7 @@ var gifUrl;
 $(document).on("click touchstart", "#button", function() {
   var gifSearch = $(this).text();
   var queryURL =
-    "http://api.giphy.com/v1/gifs/search?q=" +
+    "https://api.giphy.com/v1/gifs/search?q=" +
     gifSearch +
     "&api_key=WLXZ77HfPkwbMGs80cGMtM6qj1hK88MD&limit=10";
   $.ajax({
